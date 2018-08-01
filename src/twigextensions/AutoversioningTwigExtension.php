@@ -15,7 +15,7 @@ use Craft;
 /**
  * @author    Codemonauts
  * @package   Craft3AssetsAutoversioning
- * @since     0.1.
+ * @since     0.1
  */
 class AutoversioningTwigExtension extends \Twig_Extension
 {

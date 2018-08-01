@@ -11,7 +11,7 @@
 /**
  * @author    Codemonauts
  * @package   Craft3AssetsAutoversioning
- * @since     0.1.
+ * @since     0.1
  */
 return [
     'Craft3 Assets Autoversioning plugin loaded' => 'Craft3 Assets Autoversioning plugin loaded',
