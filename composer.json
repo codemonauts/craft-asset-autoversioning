@@ -11,8 +11,8 @@
         "craft3 assets autoversioning"
     ],
     "support": {
-        "docs": "https://github.com/codemonauts/craft3-assets-autoversioning/blob/master/README.md",
-        "issues": "https://github.com/codemonauts/craft3-assets-autoversioning/issues"
+        "docs": "https://github.com/codemonauts/craft-asset-autoversioning/blob/master/README.md",
+        "issues": "https://github.com/codemonauts/craft-asset-autoversioning/issues"
     },
     "license": "MIT",
     "authors": [
@@ -34,7 +34,7 @@
         "handle": "craft3-assets-autoversioning",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://github.com/codemonauts/craft3-assets-autoversioning/master/CHANGELOG.md",
+        "changelogUrl": "https://github.com/codemonauts/craft-asset-autoversioning/blob/master/CHANGELOG.md",
         "class": "codemonauts\\Autoversioning"
     }
 }
