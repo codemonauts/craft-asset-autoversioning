@@ -35,6 +35,6 @@
         "hasCpSettings": false,
         "hasCpSection": false,
         "changelogUrl": "https://github.com/codemonauts/craft-asset-autoversioning/blob/master/CHANGELOG.md",
-        "class": "codemonauts\\Autoversioning"
+        "class": "codemonauts\\autoversioning\\Autoversioning"
     }
 }
