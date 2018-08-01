@@ -1,0 +1,40 @@
+{
+    "name": "codemonauts/craft3-assets-autoversioning",
+    "description": "A Twig extension for CraftCMS (Craft3.x) that helps you cache-bust your assets",
+    "type": "craft-plugin",
+    "version": "0.1.",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "craft3 assets autoversioning"
+    ],
+    "support": {
+        "docs": "https://github.com/codemonauts/craft3-assets-autoversioning/blob/master/README.md",
+        "issues": "https://github.com/codemonauts/craft3-assets-autoversioning/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Codemonauts",
+            "homepage": "https://www.codemonauts.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "codemonauts\\autoversioning\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Craft3 Assets Autoversioning",
+        "handle": "craft3-assets-autoversioning",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://github.com/codemonauts/craft3-assets-autoversioning/master/CHANGELOG.md",
+        "class": "codemonauts\\Autoversioning"
+    }
+}
