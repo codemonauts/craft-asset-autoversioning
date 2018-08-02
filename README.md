@@ -1,4 +1,4 @@
-# Craft3 Assets Autoversioning plugin for Craft CMS 3.x
+# Assets Autoversioning plugin for Craft CMS 3.x
 
 A Twig extension for CraftCMS (Craft3.x) that helps you cache-bust your assets
 
@@ -24,4 +24,4 @@ To install the plugin, follow these instructions.
 
 
 
-Brought to you by [Codemonauts](https://www.codemonauts.com)
+Brought to you by [Codemonauts](https://codemonauts.com)
