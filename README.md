@@ -32,7 +32,7 @@ To install the plugin, follow these instructions.
 
 4. To use within your build process just save your build ID to a file named "build.txt" outside your document root.
 
-##USAGE
+## USAGE
 
 1. User twigextension in your template
     
@@ -45,7 +45,7 @@ To install the plugin, follow these instructions.
         <link rel="stylesheet" href="/css/styles.12345678.css">
         
 
-##SERVER SETUP
+## SERVER SETUP
 
 Make sure the server knows how to handle those files. We need to add a simple rule to our server. 
 
