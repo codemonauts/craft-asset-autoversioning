@@ -25,7 +25,7 @@ The plugin allows you to add a twigextention to your assets, which adds the buil
 
 2. Then tell composer to load the plugin:
 
-        composer require https://github.com/codemonauts/craft-asset-autoversioning
+        composer require codemonauts/craft-asset-autoversioning
 
 3. In the control panel, go to Settings → Plugins and click the “install” button for Craft3 Assets Autoversioning.
 
