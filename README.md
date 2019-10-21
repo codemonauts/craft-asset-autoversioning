@@ -20,9 +20,8 @@ Open your terminal and go to your Craft project:
 ``` shell
 cd /path/to/project
 composer require codemonauts/craft-asset-autoversioning
+./craft install/plugin craft3-assets-autoversioning
 ```
-
-In the control panel, go to Settings → Plugins and click the “install” button for *Assets Autoversioning*.
 
 ### CI/CD Pipeine
 The build number which gets added to the asset URL is read from a file called `build.txt` which must exist in your project folder. Use for example something like this in your deployment script (Example is for CodeShip):
