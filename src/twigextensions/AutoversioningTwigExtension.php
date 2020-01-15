@@ -30,6 +30,16 @@ class AutoversioningTwigExtension extends \Twig_Extension
         return 'Auto-Versioning';
     }
 
+    public function getSettings() 
+    {
+        return \codemonauts\autoversioning\Autoversioning::getInstance()->getSettings();
+    }
+
+    public function getEnv()
+    {
+        return getenv('ENVIRONMENT');
+    }
+
     public function getFunctions()
     {
         return [
@@ -39,6 +49,11 @@ class AutoversioningTwigExtension extends \Twig_Extension
 
     public function versioningFile($file)
     {
+        if ( $this->getSettings()->productionOnly === true && $this->getEnv() != 'production' ) 
+        { 
+            return $file;
+        }
+
         if ($this->_buildId === null)
         {
             if (file_exists($_SERVER['DOCUMENT_ROOT'].'/../build.txt'))
