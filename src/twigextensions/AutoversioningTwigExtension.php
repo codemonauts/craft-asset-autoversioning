@@ -49,8 +49,7 @@ class AutoversioningTwigExtension extends \Twig_Extension
 
     public function versioningFile($file)
     {
-        if ( $this->getSettings()->productionOnly === true && $this->getEnv() != 'production' ) 
-        { 
+        if ( !empty($this->getSettings()->enableForEnv) && !in_array($this->getEnv(),$this->getSettings()->enableForEnv) )         { 
             return $file;
         }
 
