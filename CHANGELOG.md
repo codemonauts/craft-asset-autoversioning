@@ -1,5 +1,9 @@
 # Assets Autoversioning Changelog
 
+## Unreleased
+### Changed
+- Fixed background color of icon
+
 ## 1.0.3 - 2019-04-06
 ### Changed
 - New icon
