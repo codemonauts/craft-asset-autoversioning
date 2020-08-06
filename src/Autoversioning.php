@@ -77,6 +77,11 @@ class Autoversioning extends Plugin
         );
     }
 
+    protected function createSettingsModel()
+    {
+        return new \codemonauts\autoversioning\models\Settings();
+    }
+
     // Protected Methods
     // =========================================================================
 
