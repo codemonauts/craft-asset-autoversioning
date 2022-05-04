@@ -1,0 +1,33 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.booleanMenuField({
+    label: 'Active'|t('craft3-assets-autoversioning'),
+    id: 'active',
+    name: 'active',
+    value: settings.active,
+    includeEnvVars: true,
+    required: true,
+    errors: settings.getErrors('active')
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'CI File'|t('craft3-assets-autoversioning'),
+    id: 'ciFile',
+    name: 'ciFile',
+    instructions: 'The file containing the build ID to use as version number. Leave empty to always use the modification time of the asset.'|t('craft3-assets-autoversioning'),
+    value: settings.ciFile,
+    suggestEnvVars: true,
+    suggestAliases: true,
+    type: 'text',
+    errors: settings.getErrors('ciFile')
+}) }}
+
+{{ forms.lightswitchField({
+    label: 'Use query parameter'|t("craft3-assets-autoversioning"),
+    instructions: 'Use query parameter instead of file suffix for versioning.'|t('craft3-assets-autoversioning'),
+    id: 'useQueryParam',
+    name: 'useQueryParam',
+    on: settings.useQueryParam,
+    required: true,
+    errors: settings.getErrors('useQueryParam')
+}) }}

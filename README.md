@@ -1,4 +1,4 @@
-# Assets Autoversioning plugin for Craft CMS 3.x
+# Assets Autoversioning plugin for Craft CMS
 
 ![Icon](resources/autoversioning.png)
 
@@ -10,7 +10,7 @@ To force the browser to download the new asset file after a update, the plugin a
 
 ## Requirements
 
- * Craft CMS >= 3.0.0
+ * Craft CMS >= 4.0.0
 
 ## Installation
 ### Project
