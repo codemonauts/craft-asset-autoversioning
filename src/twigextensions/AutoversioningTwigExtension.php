@@ -1,15 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace codemonauts\autoversioning\twigextensions;
 
-use codemonauts\autoversioning\Autoversioning;
+use codemonauts\autoversioning\models\Settings;
+use Craft;
 use craft\helpers\App;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class AutoversioningTwigExtension extends AbstractExtension
 {
-    private ?string $_buildId = null;
+    /**
+     * @var string|null Cached CI build ID (global for the whole deployment).
+     */
+    private ?string $_ciBuildId = null;
+
+    /**
+     * @var bool Whether the CI build ID has been resolved yet this request.
+     */
+    private bool $_ciResolved = false;
+
+    public function __construct(private readonly Settings $settings)
+    {
+    }
 
     public function getFunctions(): array
     {
@@ -18,33 +33,38 @@ class AutoversioningTwigExtension extends AbstractExtension
         ];
     }
 
-    public function versioningFile($file): string
+    public function versioningFile(string $file): string
     {
-        $settings = Autoversioning::$settings;
-
-        if (!$settings->active) {
+        if (!$this->settings->active) {
             return $file;
         }
 
-        $fullPath = \Craft::getAlias('@webroot') . $file;
+        $fullPath = Craft::getAlias('@webroot') . $file;
 
         if (!str_starts_with($file, '/') || !file_exists($fullPath)) {
             return $file;
         }
 
-        if ($this->_buildId === null) {
-            $ciFile = App::parseEnv($settings->ciFile);
-            if ($ciFile === '' || !file_exists($ciFile)) {
-                $this->_buildId = filemtime($fullPath);
-            } else {
-                $this->_buildId = trim(file_get_contents($ciFile));
+        $buildId = $this->getBuildId($fullPath);
+
+        if ($this->settings->useQueryParam) {
+            $separator = str_contains($file, '?') ? '&' : '?';
+            return $file . $separator . 'v=' . $buildId;
+        }
+
+        return preg_replace('{\.([^./]+)$}', ".$buildId.\$1", $file);
+    }
+
+    private function getBuildId(string $fullPath): string
+    {
+        if (!$this->_ciResolved) {
+            $ciFile = App::parseEnv($this->settings->ciFile);
+            if (is_string($ciFile) && $ciFile !== '' && is_file($ciFile)) {
+                $this->_ciBuildId = trim((string)file_get_contents($ciFile));
             }
+            $this->_ciResolved = true;
         }
 
-        if ($settings->useQueryParam) {
-            return $file . '?v=' . $this->_buildId;
-        }
-
-        return preg_replace('{\\.([^./]+)$}', ".$this->_buildId.\$1", $file);
+        return $this->_ciBuildId ?? (string)filemtime($fullPath);
     }
 }

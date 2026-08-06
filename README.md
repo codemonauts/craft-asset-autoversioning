@@ -10,7 +10,8 @@ To force the browser to download the new asset file after a update, the plugin a
 
 ## Requirements
 
- * Craft CMS >= 4.0.0
+ * Craft CMS >= 5.0.0
+ * PHP >= 8.2
 
 ## Installation
 ### Project
@@ -20,7 +21,7 @@ Open your terminal and go to your Craft project:
 ``` shell
 cd /path/to/project
 composer require codemonauts/craft-asset-autoversioning
-./craft install/plugin craft3-assets-autoversioning
+php craft plugin/install craft3-assets-autoversioning
 ```
 
 ### CI/CD Pipeine

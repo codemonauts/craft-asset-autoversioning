@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace codemonauts\autoversioning;
 
 use codemonauts\autoversioning\models\Settings;
 use codemonauts\autoversioning\twigextensions\AutoversioningTwigExtension;
-
 use Craft;
 use craft\base\Model;
 use craft\base\Plugin;
@@ -13,38 +14,25 @@ use craft\helpers\UrlHelper;
 class Autoversioning extends Plugin
 {
     /**
-     * @var Autoversioning
-     */
-    public static Autoversioning $plugin;
-
-    /**
-     * @var \codemonauts\autoversioning\models\Settings|null
-     */
-    public static ?Settings $settings;
-
-    /**
      * @inheritDoc
      */
     public bool $hasCpSettings = true;
 
     /**
-     * @var string
+     * @inheritDoc
      */
     public string $schemaVersion = '0.1';
 
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
-        self::$plugin = $this;
-
-        self::$settings = self::$plugin->getSettings();
-
-        // Register Twig extension
-        Craft::$app->view->registerTwigExtension(new AutoversioningTwigExtension());
+        if (!Craft::$app->getRequest()->getIsConsoleRequest()) {
+            Craft::$app->view->registerTwigExtension(new AutoversioningTwigExtension($this->getSettings()));
+        }
     }
 
     /**
@@ -74,11 +62,19 @@ class Autoversioning extends Plugin
     /**
      * @inheritDoc
      */
+    public function getSettings(): Settings
+    {
+        /** @var Settings */
+        return parent::getSettings();
+    }
+
+    /**
+     * @inheritDoc
+     */
     protected function settingsHtml(): ?string
     {
         return Craft::$app->getView()->renderTemplate('craft3-assets-autoversioning/settings', [
-                'settings' => $this->getSettings(),
-            ]
-        );
+            'settings' => $this->getSettings(),
+        ]);
     }
 }
