@@ -1,5 +1,17 @@
 # Assets Autoversioning Changelog
 
+## 2.0.1 - 2026-08-06
+
+### Fixed
+
+- Each file now falls back to its own modification time instead of reusing the first file's timestamp for every asset in a template ([#4](https://github.com/codemonauts/craft-asset-autoversioning/issues/4)).
+- `useQueryParam` no longer produces a double `?` when the asset path already contains a query string.
+- Hardened build-ID file resolution against the `bool|string|null` return type of `App::parseEnv()`.
+
+### Internal
+
+- Exclude test fixtures from the distributed package via `.gitattributes`.
+
 ## 2.0.0 - 2022-05-04
 
 ### Added
